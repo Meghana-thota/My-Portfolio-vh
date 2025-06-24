@@ -4,12 +4,19 @@ import { StreamingTextResponse } from "ai"
 export const runtime = "edge"
 
 export async function POST(req: Request) {
+  // DEBUGGING LOG: Confirm the API route is being hit.
+  console.log("[API_PROXY_LOG] Received request to /api/completion-proxy")
+
   try {
     const { promptContent, topic, modelProvider, temperature } = await req.json()
 
+    // DEBUGGING LOG: Log the data received from the client.
+    console.log(`[API_PROXY_LOG] Parsed data: topic=${topic}, provider=${modelProvider}`)
+
     if (!promptContent || !topic) {
+      console.error("[API_PROXY_LOG] Missing prompt content or topic")
       return new Response(JSON.stringify({ error: "Missing prompt content or topic" }), {
-        status: 400, // Bad Request
+        status: 400,
         headers: { "Content-Type": "application/json" },
       })
     }
@@ -17,20 +24,14 @@ export async function POST(req: Request) {
     const stream = await streamBlogPost(promptContent, topic, modelProvider, temperature)
     return new StreamingTextResponse(stream)
   } catch (error: any) {
-    console.error("[API_PROXY_ERROR] Error in /api/completion-proxy:", error)
-
+    console.error("[API_PROXY_LOG] Error in completion proxy:", error)
     let clientErrorMessage = "An internal server error occurred."
-    let statusCode = 500 // Internal Server Error by default
+    let statusCode = 500
 
     if (error instanceof Error) {
-      // Check for specific API key error messages from the action
-      if (
-        error.message.toLowerCase().includes("api key is not configured") ||
-        error.message.toLowerCase().includes("openai_api_key") || // More general check
-        error.message.toLowerCase().includes("groq_api_key")
-      ) {
-        clientErrorMessage = error.message // Use the specific message from the action
-        statusCode = 400 // Bad Request, as it's often a client-side setup issue (missing env var)
+      if (error.message.toLowerCase().includes("api key")) {
+        clientErrorMessage = error.message
+        statusCode = 400
       } else {
         clientErrorMessage = "An unexpected error occurred on the server."
       }

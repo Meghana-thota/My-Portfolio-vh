@@ -26,7 +26,7 @@ export default function BlogWriterPage() {
     secondaryKeywords: "python basics, learn python",
     selectedTemplate: "master",
     technologyFramework: "Python",
-    modelProvider: "free", // Default to the Free Tier
+    modelProvider: "free",
     temperature: 0.7,
   })
   const [isSheetOpen, setIsSheetOpen] = useState(false)
@@ -42,7 +42,7 @@ export default function BlogWriterPage() {
   } = useCompletion({
     api: "/api/completion-proxy",
     onError: (err) => {
-      console.error("Error from useCompletion:", err)
+      console.error("Error from useCompletion hook:", err)
       let description = err.message || "An unexpected error occurred. Check the console for more details."
       if (err.message.toLowerCase().includes("api key")) {
         description = `API Key Error: ${err.message}. Please ensure the required API key is set in your project's environment variables.`
@@ -85,13 +85,18 @@ export default function BlogWriterPage() {
     }
 
     const fullPrompt = buildFullPrompt()
+    const bodyPayload = {
+      promptContent: fullPrompt,
+      topic: topic,
+      modelProvider: filterData.modelProvider,
+      temperature: filterData.temperature,
+    }
+
+    // DEBUGGING LOG: Log the payload being sent from the client.
+    console.log("[CLIENT LOG] Submitting form with payload:", bodyPayload)
+
     handleCompletionSubmit(e, {
-      body: {
-        promptContent: fullPrompt,
-        topic: topic,
-        modelProvider: filterData.modelProvider,
-        temperature: filterData.temperature,
-      },
+      body: bodyPayload,
     })
   }
 

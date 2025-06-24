@@ -5,7 +5,6 @@ import { groq } from "@ai-sdk/groq"
 import { openai } from "@ai-sdk/openai"
 import type { LanguageModel } from "ai"
 
-// We'll simplify the provider to "free" (Groq) and "openai"
 export type ModelProvider = "free" | "openai"
 
 function getSimulatedRetrievedContext(topic: string): string {
@@ -28,19 +27,28 @@ export async function streamBlogPost(
   modelProvider: ModelProvider,
   temperature = 0.7,
 ) {
+  // DEBUGGING LOG: Check if the action is being called and what provider is used.
+  console.log(`[ACTION LOG] streamBlogPost called with provider: ${modelProvider}`)
+
   let llm: LanguageModel
 
   if (modelProvider === "openai") {
-    // Premium model: requires the developer to have set an OpenAI key
-    if (!process.env.OPENAI_API_KEY) {
+    const key = process.env.OPENAI_API_KEY
+    // DEBUGGING LOG: Check for the OpenAI API key.
+    console.log(`[ACTION LOG] Checking for OPENAI_API_KEY. Found: ${key ? "Yes" : "No"}`)
+    if (!key) {
       throw new Error(
         "To use the Premium (OpenAI) model, the developer must set the OPENAI_API_KEY environment variable.",
       )
     }
     llm = openai("gpt-4o")
   } else {
-    // Free Tier model (default): uses Groq, requires the developer to have set a Groq key
-    if (!process.env.GROQ_API_KEY) {
+    const key = process.env.GROQ_API_KEY
+    // DEBUGGING LOG: Check for the Groq API key and log a masked version for security.
+    const maskedKey = key ? `gsk_...${key.slice(-6)}` : "Not Found"
+    console.log(`[ACTION LOG] Checking for GROQ_API_KEY. Value: ${maskedKey}`)
+
+    if (!key) {
       throw new Error("To use the Free Tier, the developer must set the GROQ_API_KEY environment variable.")
     }
     llm = groq("llama3-70b-8192")
@@ -62,11 +70,19 @@ Original Blog Post Request:
 ${originalPromptContent}
 --------------------
 `
-  const result = await streamText({
-    model: llm,
-    prompt: finalPrompt,
-    temperature: temperature,
-  })
+  // DEBUGGING LOG: Log the topic being sent to the AI.
+  console.log(`[ACTION LOG] Generating text for topic: "${topic}"`)
 
-  return result.toTextStream()
+  try {
+    const result = await streamText({
+      model: llm,
+      prompt: finalPrompt,
+      temperature: temperature,
+    })
+    console.log("[ACTION LOG] streamText call successful. Returning stream.")
+    return result.toTextStream()
+  } catch (error) {
+    console.error("[ACTION LOG] Error during streamText call:", error)
+    throw error // Re-throw the error to be caught by the API route
+  }
 }
