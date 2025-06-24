@@ -14,7 +14,7 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 Your project is live at:
 
-**[https://vercel.com/meghanathota13-gmailcoms-projects/v0-personal-portfolio](https://vercel.com/meghanathota13-gmailcoms-projects/v0-personal-portfolio)**
+**[[https://vercel.com/meghanathota13-gmailcoms-projects/v0-personal-portfolio](https://vercel.com/meghanathota13-gmailcoms-projects/v0-personal-portfolio)](https://v0-personal-portfolio-sand-seven.vercel.app/)**
 
 ## Build your app
 
