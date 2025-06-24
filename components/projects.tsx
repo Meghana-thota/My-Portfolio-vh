@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Github, Calendar } from "lucide-react"
+import { motion } from "framer-motion"
 
 export function Projects() {
   const projects = [
@@ -106,74 +107,88 @@ export function Projects() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Published":
-        return "bg-green-100 text-green-800"
+        return "bg-green-100 text-green-800 border-green-300"
       case "Production":
-        return "bg-blue-100 text-blue-800"
+        return "bg-blue-100 text-blue-800 border-blue-300"
       case "In Progress":
-        return "bg-yellow-100 text-yellow-800"
+        return "bg-yellow-100 text-yellow-800 border-yellow-300"
       case "Research":
-        return "bg-purple-100 text-purple-800"
+        return "bg-purple-100 text-purple-800 border-purple-300"
       default:
-        return "bg-gray-100 text-gray-800"
+        return "bg-gray-100 text-gray-800 border-gray-300"
     }
   }
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-          <p className="text-xl text-gray-600">
-            Innovative AI solutions spanning healthcare, research, and automotive industries
-          </p>
-        </div>
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
+        <p className="text-xl text-gray-600">
+          Innovative AI solutions spanning healthcare, research, and automotive industries
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow h-full flex flex-col">
-              <CardHeader>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            className="h-full"
+            whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+            transition={{ type: "spring", stiffness: 300, duration: 0.2 }}
+          >
+            <Card className="h-full flex flex-col border-2 border-transparent hover:border-blue-300 transition-colors duration-300 overflow-hidden group">
+              <CardHeader className="pb-4">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
-                    <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
-                    <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
+                    <CardTitle className="text-xl mb-2 group-hover:text-blue-600 transition-colors">
+                      {project.title}
+                    </CardTitle>
+                    <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
                       <Calendar className="h-4 w-4" />
                       <span>{project.period}</span>
                     </div>
                   </div>
-                  <Badge className={getStatusColor(project.status)}>{project.status}</Badge>
+                  <Badge variant="outline" className={`text-xs font-semibold ${getStatusColor(project.status)}`}>
+                    {project.status}
+                  </Badge>
                 </div>
-                <p className="text-gray-600">{project.description}</p>
+                <p className="text-gray-600 text-sm">{project.description}</p>
               </CardHeader>
-              <CardContent className="flex-1 flex flex-col">
-                <div className="mb-6 flex-1">
-                  <h4 className="font-semibold mb-3">Key Highlights</h4>
-                  <ul className="space-y-2">
-                    {project.highlights.map((highlight, i) => (
-                      <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
-                        <span className="text-blue-600 mt-1">•</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
+              <CardContent className="flex-1 flex flex-col pt-0">
+                <div className="mb-4 flex-1">
+                  <h4 className="font-semibold text-sm mb-2 text-gray-700">Key Highlights</h4>
+                  <ul className="space-y-1.5">
+                    {project.highlights.slice(0, 3).map(
+                      (
+                        highlight,
+                        i, // Show only first 3 highlights initially
+                      ) => (
+                        <li key={i} className="text-xs text-gray-500 flex items-start gap-2">
+                          <span className="text-blue-500 mt-0.5">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ),
+                    )}
                   </ul>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3">Technologies</h4>
-                  <div className="flex flex-wrap gap-2">
+                <div className="mb-4">
+                  <h4 className="font-semibold text-sm mb-2 text-gray-700">Technologies</h4>
+                  <div className="flex flex-wrap gap-1.5">
                     {project.technologies.map((tech, i) => (
-                      <Badge key={i} variant="outline" className="text-xs">
+                      <Badge key={i} variant="secondary" className="text-xs">
                         {tech}
                       </Badge>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex gap-3 mt-auto">
-                  {project.github && (
+                <div className="mt-auto pt-4 border-t border-gray-200">
+                  {project.github && project.github !== "#" && (
                     <Button
                       size="sm"
-                      variant="outline"
-                      className="w-full"
+                      variant="default"
+                      className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all transform hover:scale-105"
                       onClick={() => window.open(project.github, "_blank")}
                     >
                       <Github className="mr-2 h-4 w-4" />
@@ -183,9 +198,9 @@ export function Projects() {
                 </div>
               </CardContent>
             </Card>
-          ))}
-        </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
+    </div>
   )
 }

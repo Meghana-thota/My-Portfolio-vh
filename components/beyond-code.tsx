@@ -15,7 +15,7 @@ export function BeyondCode() {
     {
       icon: ChefHat,
       title: "Cooking New Cuisines",
-      description: "Experimenting with flavors from around the world, from Mexican Tacos to Italian pastas",
+      description: "Experimenting with flavors from around the world",
       color: "text-orange-600",
       bgColor: "bg-orange-50",
     },
