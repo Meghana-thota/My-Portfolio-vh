@@ -43,19 +43,19 @@ export function Projects() {
       github: "https://github.com/Meghana-thota/ETLWEATHER",
     },
     {
-      title: "LLM-based Research Paper Chatbot",
+      title: "RAG Chatbot for Article Generation",
       description:
-        "GenAI-powered chatbot using RAG and LangChain to recommend top-10 relevant research papers based on natural language queries.",
-      period: "Mar 2025 – June 2025",
-      status: "In Progress",
+        "AI-powered blog writing assistant using RAG architecture with OpenAI GPT and Groq models to significantly reduce content creation time.",
+      period: "April 2025 – May 2025",
+      status: "Published", // Assuming 'Published' or 'Completed'
       highlights: [
-        "Applied Supervised Fine-Tuning (SFT) on GPT3.5 achieving 15% better precision",
-        "Designed hybrid retrieval pipeline with dense vector search and Knowledge Graph",
-        "Engineered multimodal support for abstracts, tables, and figures",
-        "Built intuitive Streamlit UI with real-time search and semantic explanations",
+        "Developed AI-powered blog writing assistant using RAG architecture with OpenAI GPT and Groq models.",
+        "Built Streamlit interface with configurable parameters (tone, length, model selection, Temperature) and real-time chat functionality.",
+        "Integrated vector database (FAISS) for content retrieval and implemented semantic search for relevant source material.",
+        "Deployed on AWS EC2 with automated content generation reducing writing time by 60%.",
       ],
-      technologies: ["GPT-3.5", "LangChain", "RAG", "OpenSearch", "AWS S3", "AWS Lambda", "Streamlit"],
-      github: "#",
+      technologies: ["RAG", "OpenAI GPT", "Groq", "Streamlit", "FAISS", "AWS EC2", "Python"],
+      github: "#", // Placeholder as no link was provided
     },
     {
       title: "NLMDB Python Package",
@@ -88,7 +88,7 @@ export function Projects() {
       github: "#",
     },
     {
-      title: "Battery Performance Optimization",
+      title: "Machine Learning Driven Battery Performance Optimization for Electric Vehicles",
       description:
         "ML-driven system for electric vehicle battery performance optimization with predictive modeling and anomaly detection.",
       period: "May 2022 – July 2023",
@@ -159,10 +159,8 @@ export function Projects() {
                   <h4 className="font-semibold text-sm mb-2 text-gray-700">Key Highlights</h4>
                   <ul className="space-y-1.5">
                     {project.highlights.slice(0, 3).map(
-                      (
-                        highlight,
-                        i, // Show only first 3 highlights initially
-                      ) => (
+                      // Show only first 3 highlights initially
+                      (highlight, i) => (
                         <li key={i} className="text-xs text-gray-500 flex items-start gap-2">
                           <span className="text-blue-500 mt-0.5">•</span>
                           <span>{highlight}</span>
