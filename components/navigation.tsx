@@ -49,11 +49,11 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-light-cream">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border-light">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div
-            className="text-xl font-semibold text-dark-charcoal cursor-pointer"
+            className="text-xl font-semibold text-text-primary cursor-pointer"
             onClick={() => window.open("https://Meghana_Thota.info", "_blank")}
           >
             Meghana Thota
@@ -67,8 +67,8 @@ export default function Navigation() {
                 onClick={() => scrollToSection(item.href)}
                 className={`text-sm font-medium transition-colors ${
                   activeSection === item.href.substring(1)
-                    ? "text-deep-navy border-b-2 border-deep-navy pb-1"
-                    : "text-dark-charcoal hover:text-deep-navy"
+                    ? "text-primary-blue border-b-2 border-primary-blue pb-1"
+                    : "text-text-secondary hover:text-primary-blue"
                 }`}
               >
                 {item.name}
@@ -78,7 +78,7 @@ export default function Navigation() {
               variant="ghost"
               size="sm"
               onClick={() => window.open("https://www.linkedin.com/in/meghana-thota36/", "_blank")}
-              className="text-dark-charcoal hover:text-deep-navy p-2"
+              className="text-text-secondary hover:text-primary-blue p-2"
             >
               <Linkedin className="h-5 w-5" />
             </Button>
@@ -90,11 +90,11 @@ export default function Navigation() {
               variant="ghost"
               size="sm"
               onClick={() => window.open("https://www.linkedin.com/in/meghana-thota36/", "_blank")}
-              className="text-dark-charcoal hover:text-deep-navy p-2"
+              className="text-text-secondary hover:text-primary-blue p-2"
             >
               <Linkedin className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} className="text-dark-charcoal">
+            <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)} className="text-text-secondary">
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
@@ -102,14 +102,14 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white border-t border-light-cream py-4">
+          <div className="md:hidden bg-white border-t border-border-light py-4">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
                   className={`text-left text-sm font-medium transition-colors ${
-                    activeSection === item.href.substring(1) ? "text-deep-navy" : "text-dark-charcoal"
+                    activeSection === item.href.substring(1) ? "text-primary-blue" : "text-text-secondary"
                   }`}
                 >
                   {item.name}

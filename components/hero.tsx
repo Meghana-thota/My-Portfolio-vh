@@ -21,16 +21,16 @@ export function Hero() {
             alt="Meghana Thota"
             width={120}
             height={120}
-            className="rounded-full mx-auto mb-8 border border-light-cream"
+            className="rounded-full mx-auto mb-8 border border-border-light"
             priority
           />
         </div>
 
-        <h1 className="text-5xl md:text-5xl font-normal mb-5 text-dark-charcoal leading-tight">
-          Data Scientist & <span className="text-deep-navy">AI/ML Engineer</span>
+        <h1 className="text-5xl md:text-5xl font-normal mb-5 text-text-primary leading-tight">
+          Data Scientist & <span className="text-primary-blue">AI/ML Engineer</span>
         </h1>
 
-        <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl text-text-secondary mb-12 max-w-3xl mx-auto leading-relaxed">
           Transforming complex data into intelligent solutions that drive innovation and create measurable business
           impact across industries.
         </p>
@@ -38,7 +38,7 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
           <Button
             size="lg"
-            className="bg-deep-navy hover:bg-muted-purple text-white px-8 py-3 transition-colors"
+            className="bg-primary-blue hover:bg-blue-hover text-white px-8 py-3 transition-colors"
             onClick={() => window.open("https://medium.com/@meghanathota13", "_blank")}
           >
             <ExternalLink className="mr-2 h-4 w-4" />
@@ -47,7 +47,7 @@ export function Hero() {
           <Button
             size="lg"
             variant="outline"
-            className="border-muted-purple text-dark-charcoal hover:bg-light-cream px-8 py-3 bg-transparent transition-colors"
+            className="border-border-light text-text-secondary hover:bg-bg-light px-8 py-3 bg-transparent transition-colors"
             onClick={scrollToAbout}
           >
             Learn More
@@ -62,9 +62,9 @@ export function Hero() {
             { value: "6+", label: "Certifications", sublabel: "AWS & Data Science" },
           ].map((metric, index) => (
             <div key={index} className="text-center">
-              <div className="text-4xl font-semibold text-deep-navy mb-2">{metric.value}</div>
-              <div className="text-dark-charcoal font-medium">{metric.label}</div>
-              <div className="text-sm text-gray-500">{metric.sublabel}</div>
+              <div className="text-4xl font-semibold text-primary-blue mb-2">{metric.value}</div>
+              <div className="text-text-primary font-medium">{metric.label}</div>
+              <div className="text-sm text-text-secondary">{metric.sublabel}</div>
             </div>
           ))}
         </div>

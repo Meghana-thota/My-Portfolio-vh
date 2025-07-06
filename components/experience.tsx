@@ -42,21 +42,21 @@ export function Experience() {
     <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-6 text-dark-charcoal">Professional Experience</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-semibold mb-6 text-text-primary">Professional Experience</h2>
+          <p className="text-lg text-text-secondary max-w-3xl mx-auto">
             Building impactful AI solutions across healthcare and automotive industries
           </p>
         </div>
 
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <Card key={index} className="border border-warm-beige bg-light-cream">
+            <Card key={index} className="border border-border-light bg-bg-light">
               <CardHeader>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <CardTitle className="text-xl font-semibold mb-2 text-dark-charcoal">{exp.title}</CardTitle>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-gray-600">
-                      <span className="font-medium text-deep-navy">{exp.company}</span>
+                    <CardTitle className="text-xl font-semibold mb-2 text-text-primary">{exp.title}</CardTitle>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-text-secondary">
+                      <span className="font-medium text-primary-blue">{exp.company}</span>
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-1">
                           <MapPin className="h-4 w-4" />
@@ -69,31 +69,31 @@ export function Experience() {
                       </div>
                     </div>
                   </div>
-                  <Badge variant="outline" className="border-muted-purple text-muted-purple">
+                  <Badge variant="outline" className="border-primary-blue text-primary-blue">
                     {exp.type}
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-3 text-dark-charcoal">Key Achievements</h4>
+                  <h4 className="font-semibold mb-3 text-text-primary">Key Achievements</h4>
                   <ul className="space-y-2">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="text-gray-600 flex items-start">
-                        <span className="w-1.5 h-1.5 bg-deep-navy rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <li key={i} className="text-text-secondary flex items-start">
+                        <span className="w-1.5 h-1.5 bg-primary-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         <span>{achievement}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-3 text-dark-charcoal">Technologies Used</h4>
+                  <h4 className="font-semibold mb-3 text-text-primary">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, i) => (
                       <Badge
                         key={i}
                         variant="secondary"
-                        className="bg-white text-dark-charcoal border border-warm-beige"
+                        className="bg-white text-text-primary border border-border-light"
                       >
                         {tech}
                       </Badge>

@@ -47,11 +47,11 @@ export function About() {
   ]
 
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-light-cream">
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 bg-bg-light">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-6 text-dark-charcoal">About Me</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-4xl font-semibold mb-6 text-text-primary">About Me</h2>
+          <p className="text-lg text-text-secondary max-w-3xl mx-auto leading-relaxed">
             Results-driven Data Scientist with a proven track record of delivering enterprise-grade AI solutions that
             drive measurable business impact and operational efficiency.
           </p>
@@ -59,8 +59,8 @@ export function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-dark-charcoal">Background</h3>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <h3 className="text-2xl font-semibold mb-6 text-text-primary">Background</h3>
+            <div className="space-y-4 text-text-secondary leading-relaxed">
               <p>
                 Master's in Data Science from UMass Dartmouth with 2+ years of hands-on experience architecting and
                 deploying production-ready AI systems. Demonstrated expertise in reducing operational costs by 40%
@@ -81,13 +81,13 @@ export function About() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-semibold mb-6 text-dark-charcoal">Core Competencies</h3>
+            <h3 className="text-2xl font-semibold mb-6 text-text-primary">Core Competencies</h3>
             <div className="space-y-4">
               {expertise.map((item, index) => (
-                <Card key={index} className="border border-warm-beige bg-white">
+                <Card key={index} className="border border-border-light bg-white">
                   <CardContent className="p-4">
-                    <h4 className="font-semibold mb-2 text-dark-charcoal">{item.title}</h4>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                    <h4 className="font-semibold mb-2 text-text-primary">{item.title}</h4>
+                    <p className="text-text-secondary text-sm leading-relaxed">{item.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -95,14 +95,14 @@ export function About() {
           </div>
         </div>
 
-        <div className="border-t border-warm-beige pt-12">
-          <h3 className="text-2xl font-semibold mb-8 text-dark-charcoal text-center">Technology Stack</h3>
+        <div className="border-t border-border-light pt-12">
+          <h3 className="text-2xl font-semibold mb-8 text-text-primary text-center">Technology Stack</h3>
           <div className="flex flex-wrap justify-center gap-2">
             {technologies.map((tech, index) => (
               <Badge
                 key={index}
                 variant="secondary"
-                className="bg-white border border-warm-beige text-dark-charcoal px-3 py-1 hover:bg-light-cream transition-colors"
+                className="bg-white border border-border-light text-text-primary px-3 py-1 hover:bg-bg-light transition-colors"
               >
                 {tech}
               </Badge>

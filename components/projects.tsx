@@ -108,11 +108,11 @@ export function Projects() {
   ]
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-light-cream">
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-bg-light">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-6 text-dark-charcoal">Featured Projects</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-semibold mb-6 text-text-primary">Featured Projects</h2>
+          <p className="text-lg text-text-secondary max-w-3xl mx-auto">
             Production-grade AI systems delivering measurable business impact across healthcare, automotive, and
             enterprise sectors.
           </p>
@@ -120,30 +120,30 @@ export function Projects() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="border border-warm-beige h-full bg-white">
+            <Card key={index} className="border border-border-light h-full bg-white">
               <CardHeader className="pb-4">
                 <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-xl font-semibold text-dark-charcoal leading-tight">
+                  <CardTitle className="text-xl font-semibold text-text-primary leading-tight">
                     {project.title}
                   </CardTitle>
-                  <Badge variant="outline" className="ml-4 text-xs border-muted-purple text-muted-purple">
+                  <Badge variant="outline" className="ml-4 text-xs border-primary-blue text-primary-blue">
                     {project.status}
                   </Badge>
                 </div>
-                <p className="text-sm text-gray-500 mb-3">{project.period}</p>
-                <div className="bg-warm-beige rounded-lg p-3 mb-4 border-l-4 border-deep-navy">
-                  <p className="text-dark-charcoal font-medium text-sm">{project.impact}</p>
+                <p className="text-sm text-text-secondary mb-3">{project.period}</p>
+                <div className="bg-bg-light rounded-lg p-3 mb-4 border-l-4 border-primary-blue">
+                  <p className="text-text-primary font-medium text-sm">{project.impact}</p>
                 </div>
-                <p className="text-gray-700 leading-relaxed">{project.description}</p>
+                <p className="text-text-secondary leading-relaxed">{project.description}</p>
               </CardHeader>
 
               <CardContent className="space-y-4">
                 <div>
-                  <h4 className="font-semibold mb-3 text-dark-charcoal">Key Achievements</h4>
+                  <h4 className="font-semibold mb-3 text-text-primary">Key Achievements</h4>
                   <ul className="space-y-2">
                     {project.highlights.map((highlight, i) => (
-                      <li key={i} className="text-gray-600 text-sm flex items-start leading-relaxed">
-                        <span className="w-1.5 h-1.5 bg-deep-navy rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <li key={i} className="text-text-secondary text-sm flex items-start leading-relaxed">
+                        <span className="w-1.5 h-1.5 bg-primary-blue rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         <span>{highlight}</span>
                       </li>
                     ))}
@@ -151,13 +151,13 @@ export function Projects() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-3 text-dark-charcoal">Technologies</h4>
+                  <h4 className="font-semibold mb-3 text-text-primary">Technologies</h4>
                   <div className="flex flex-wrap gap-1">
                     {project.technologies.map((tech, i) => (
                       <Badge
                         key={i}
                         variant="secondary"
-                        className="text-xs bg-light-cream text-dark-charcoal border border-warm-beige"
+                        className="text-xs bg-bg-light text-text-primary border border-border-light"
                       >
                         {tech}
                       </Badge>
@@ -165,11 +165,11 @@ export function Projects() {
                   </div>
                 </div>
 
-                <div className="flex gap-3 pt-4 border-t border-warm-beige">
+                <div className="flex gap-3 pt-4 border-t border-border-light">
                   <Button
                     size="sm"
                     variant="outline"
-                    className="flex items-center gap-2 text-xs bg-transparent border-muted-purple text-muted-purple hover:bg-light-cream"
+                    className="flex items-center gap-2 text-xs bg-transparent border-primary-blue text-primary-blue hover:bg-bg-light"
                     onClick={() => window.open(project.github, "_blank")}
                   >
                     <Github className="h-3 w-3" />
@@ -178,7 +178,7 @@ export function Projects() {
                   {project.demo && (
                     <Button
                       size="sm"
-                      className="flex items-center gap-2 bg-deep-navy hover:bg-muted-purple text-xs transition-colors"
+                      className="flex items-center gap-2 bg-primary-blue hover:bg-blue-hover text-xs transition-colors"
                       onClick={() => window.open(project.demo, "_blank")}
                     >
                       <ExternalLink className="h-3 w-3" />

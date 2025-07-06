@@ -61,12 +61,13 @@ const config: Config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Urban Chic Color Palette
-        "deep-navy": "#4A4E69",
-        "dark-charcoal": "#22223B",
-        "muted-purple": "#9A8C98",
-        "warm-beige": "#C9ADA7",
-        "light-cream": "#F2E9E4",
+        // Clean Blue & White Color Palette (inspired by Rakshith's design)
+        "primary-blue": "#4F7CFF",
+        "blue-hover": "#3B5FE8",
+        "text-primary": "#1A1A1A",
+        "text-secondary": "#6B7280",
+        "bg-light": "#F8FAFC",
+        "border-light": "#E5E7EB",
       },
       borderRadius: {
         lg: "var(--radius)",
