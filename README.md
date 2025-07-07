@@ -12,9 +12,9 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 ## Deployment
 
-Your project is live at:
+project is live at:
 
-**https://v0-personal-portfolio-sand-seven.vercel.app/**
+**https://meghana-thota-portfolio-site.vercel.app/**
 
 ## Build your app
 
